@@ -19,7 +19,6 @@ app.get("/episodes/:id", function (req, res) {
   });
 });
 
-
 app.post("/episodes", function (req, res) {
   Episodes.create(req.body).then((episodes) => {
     res.json(episodes);
@@ -27,15 +26,18 @@ app.post("/episodes", function (req, res) {
 });
 
 app.post("/episodes/:id", function (req, res) {
-  Episodes.findByIdAndUpdate(
-    req.params.id,
-    { $push: req.body },
-    { new: true }
-  ).then((episodes) => {
+    console.log(req.body)
+  Episodes.findByIdAndUpdate({ _id: req.params.id }, {name:req.body.name}).then(
+    (episodes) => {
+      res.json(episodes);
+    }
+  );
+});
+app.delete("/episodes/:id", function (req, res) {
+  Episodes.findByIdAndDelete(req.params.id).then((episodes) => {
     res.json(episodes);
   });
 });
-
 app.listen(port, () =>
   console.log(`Example app episodesening at http://localhost:${port}`)
 );
