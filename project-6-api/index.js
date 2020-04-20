@@ -1,11 +1,13 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const app = express();
 const parser = require("body-parser");
 const port = 3000;
 const Episodes = require("./models/Episodes");
+const cors = require("cors");
+
 
 app.use(parser.json());
+app.use(cors())
 
 app.get("/episodes", function (req, res) {
   Episodes.find({}).then((episodes) => {
@@ -26,8 +28,8 @@ app.post("/episodes", function (req, res) {
 });
 
 app.post("/episodes/:id", function (req, res) {
-    console.log(req.body)
-  Episodes.findByIdAndUpdate({ _id: req.params.id }, {name:req.body.name}).then(
+   
+  Episodes.findByIdAndUpdate({ _id: req.params.id }, req.body).then(
     (episodes) => {
       res.json(episodes);
     }
@@ -37,7 +39,6 @@ app.delete("/episodes/:id", function (req, res) {
   Episodes.findByIdAndDelete(req.params.id).then((episodes) => {
     res.json(episodes);
   });
-});
-app.listen(port, () =>
-  console.log(`Example app episodesening at http://localhost:${port}`)
-);
+  app.set("port", process.env.PORT || 8080);
+  app.listen(app.get("port"), () => {  console.log(`✅ PORT: ${app.get("port")} 🌟`);});
+
