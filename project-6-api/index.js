@@ -39,6 +39,7 @@ app.delete("/episodes/:id", function (req, res) {
   Episodes.findByIdAndDelete(req.params.id).then((episodes) => {
     res.json(episodes);
   });
+})
+
   app.set("port", process.env.PORT || 8080);
   app.listen(app.get("port"), () => {  console.log(`✅ PORT: ${app.get("port")} 🌟`);});
-
