@@ -11,4 +11,3 @@ mongoose.connect(mongoURI, { useNewUrlParser: true });
 ​
 module.exports = mongoose; 
 
-"mongodb+srv://sbkelly9:Jamkid7!@cluster0-rafzc.mongodb.net/test?retryWrites=true&w=majority"
