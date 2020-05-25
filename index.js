@@ -15,6 +15,11 @@ app.get("/episodes", function (req, res) {
   });
 });
 
+app.get("/", function (req, res) {
+    res.send("hello");
+  
+});
+
 app.get("/episodes/:id", function (req, res) {
   Episodes.findOne({ _id: req.params.id }).then((episodes) => {
     res.json(episodes);
