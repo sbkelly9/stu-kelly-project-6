@@ -9,3 +9,5 @@ if (process.env.NODE_ENV === "production") {
 } else {
   mongoURI = "mongodb://localhost/stu-kelly-project-6";
 }
+
+module.exports = mongoose;
