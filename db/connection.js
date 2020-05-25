@@ -16,3 +16,4 @@ mongoose
 // now, our mongoose instance has a configured connection to our local db, in addition
 // to its model configuration
 module.exports = mongoose;
+
